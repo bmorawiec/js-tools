@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindromic dates generator / batmov</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="text">
+    <p>From... (year)</p>
+    <input id="start" type="number">
+    <p>To... (year)</p>
+    <input id="end" type="number">
+    <button onclick="Generate();">Generate!</button>
+    <br><br>
+    
+    <textarea readonly id="res" class="result"></textarea>
+
+    <br><br>
+</div>
+
+</body>
+<script>
+
+function Generate() {
+    let StartInput = document.getElementById("start");
+    let EndInput = document.getElementById("end");
+    let ResultBox = document.getElementById("res");
+
+    ResultBox.value = "";
+
+    let imax = EndInput.value - StartInput.value;
+
+    for (let i = 0; i <= imax; i++) {
+        let year = (parseInt(StartInput.value) + i).toString();
+        let month = year.substring(0,2);
+        let ReversedMonth = year.charAt(1) + year.charAt(0);
+        let ReversedDay = year.charAt(3) + year.charAt(2);
+
+        let IsValidLength = (year.length == 4);
+        let IsValidMonth = (ReversedMonth <= 12);
+        let IsValidDay = (ReversedDay <= DaysInMonth(month, year) && ReversedDay > 0);
+
+        if (IsValidLength && IsValidMonth && IsValidDay) ResultBox.value += ReversedDay + "." + ReversedMonth + "." + year + "\n";
+    }
+}
+
+function DaysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+
+</script>
+</html>

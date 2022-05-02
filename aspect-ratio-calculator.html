@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspect ratio calculator / batmov</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="text">
+    <p>Width</p>
+    <input oninput="getAspectRatio()" id="width" type="number">
+    <p>Height</p>
+    <input oninput="getAspectRatio()" id="height" type="number">
+    <br><br>
+    
+    <p>Aspect ratio</p>
+    <input readonly id="aspect-width" type="number">
+    :
+    <input readonly id="aspect-height" type="number">
+
+    <br><br>
+</div>
+
+</body>
+<script>
+
+let widthInput = document.getElementById("width");
+let heightInput = document.getElementById("height");
+let widthOutput = document.getElementById("aspect-width");
+let heightOutput = document.getElementById("aspect-height");
+
+function getAspectRatio() {
+    let x = widthInput.value;
+    let y = heightInput.value;
+    let gcd = greatestCommonDivider(x, y);
+    let ax = x / gcd;
+    let ay = y / gcd;
+    widthOutput.value = ax;
+    heightOutput.value = ay;
+    console.log(x, y, ax, ay);
+}
+
+function greatestCommonDivider(a, b) {
+    let remainder;
+    while(b != 0) {
+        remainder = a % b;
+        a = b;
+        b = remainder;
+    }
+    return a;
+}
+
+</script>
+</html>
