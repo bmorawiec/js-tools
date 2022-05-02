@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding notch puzzle</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <div class="text">
+        <br>
+        <br>
+        <div id="canvas">
+    
+        </div>
+        <div id="window-container">
+            <div id="window">
+                <h2>Game over</h2>
+                <hr>
+                <table>
+                    <tr>
+                        <td>
+                            Moves
+                        </td>
+                        <td id="moves-string">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Time
+                        </td>
+                        <td id="time-string">
+                            0
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <table>
+                    <tr>
+                        <td>
+                            Board size
+                        </td>
+                        <td id="size-string">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Number of elements
+                        </td>
+                        <td id="amount-string">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Number of mixing movements
+                        </td>
+                        <td id="scramble-string">
+                            0
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <br>
+                <button onclick="winWindow(false);">Close</button>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <table>
+            <tr>
+                <td>
+                    Moves
+                </td>
+                <td>
+                    <input type="text" disabled id="moves"><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Time
+                </td>
+                <td>
+                    <input type="text" disabled id="time"><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Preset
+                </td>
+                <td>
+                    <select onchange="updateDiff();" id="diff-list">
+                        <option>Beginner</option>
+                        <option>Easy</option>
+                        <option>Normal</option>
+                        <option>Hard</option>
+                        <option>Very hard</option>
+                        <option>Extremely hard</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <td>
+                    Element size
+                </td>
+                <td>
+                    <input id="size" type="number" value="50">
+                    px
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Board size
+                </td>
+                <td>
+                    <input id="width" type="number" value="4">
+                    x
+                    <input id="height" type="number" value="5">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Number of elements
+                </td>
+                <td>
+                    <input id="amount" type="number" value="17">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Number of mixing movements
+                </td>
+                <td>
+                    <input id="scramble-amount" type="number" value="100">
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <br>
+        <button onclick="apply();">Apply</button>
+        <button onclick="scramble(parseInt(scrambleAmountElem.value));">Scramble</button>
+        <button onclick="stopTimer();">Stop</button>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
